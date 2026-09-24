@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.9">
+
+  <world name="room_world">
+
+
+    <!-- Gazebo system plugins -->
+
+   <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+
+    <physics name="1ms" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    
+
+
+    <light
+      name="sun"
+      type="directional">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 0 5 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <direction>-0.5 -0.5 -1</direction>
+
+    </light>
+
+
+    <include>
+
+      <uri>model://room</uri>
+
+      <name>room</name>
+
+      <pose>
+        0 0 0
+        0 0 0
+      </pose>
+
+    </include>
+
+
+    <include>
+
+      <uri>model://table</uri>
+
+      <name>table</name>
+
+      <pose>
+        0 0 0
+        0 0 0
+      </pose>
+
+    </include>
+
+
+    <include>
+
+      <uri>model://chair</uri>
+
+      <name>chair</name>
+
+      <pose>
+        0 0 0
+        0 0 0
+      </pose>
+
+    </include>
+
+
+
+    <include>
+
+      <uri>model://couch</uri>
+
+      <name>couch</name>
+
+      <pose>
+        0 0 0
+        0 0 0
+      </pose>
+
+    </include>
+
+
+  </world>
+
+</sdf>

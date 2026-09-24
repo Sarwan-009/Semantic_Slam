@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.9">
+
+  <model name="room">
+
+    <static>true</static>
+
+    <link name="room_link">
+
+      <visual name="room_visual">
+
+        <geometry>
+
+          <mesh>
+            <uri>model://room/mesh/room.dae</uri>
+          </mesh>
+
+        </geometry>
+
+      </visual>
+
+      <collision name="room_collision">
+
+        <geometry>
+
+          <mesh>
+            <uri>model://room/mesh/room.dae</uri>
+          </mesh>
+
+        </geometry>
+
+      </collision>
+
+    </link>
+
+  </model>
+
+</sdf>
