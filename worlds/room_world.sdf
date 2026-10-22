@@ -37,8 +37,8 @@
 
 
     <light
-      name="sun"
-      type="directional">
+      name="point_1"
+      type="point">
 
       <cast_shadows>true</cast_shadows>
 
@@ -47,7 +47,37 @@
       <diffuse>1 1 1 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
 
-      <direction>-0.5 -0.5 -1</direction>
+      <direction>0 0 -1</direction>
+
+    </light>
+
+    <light
+      name="point_2"
+      type="point">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 4 5 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <direction>0 0 -1</direction>
+
+    </light>
+
+    <light
+      name="point_3"
+      type="point">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 -4 5 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <direction>0 0 -1</direction>
 
     </light>
 
@@ -65,7 +95,6 @@
 
     </include>
 
-
     <include>
 
       <uri>model://table</uri>
@@ -73,8 +102,8 @@
       <name>table</name>
 
       <pose>
-        0 0 0
-        0 0 0
+        3.5 4.5 0
+        0 0 1.5708
       </pose>
 
     </include>
@@ -87,7 +116,7 @@
       <name>chair</name>
 
       <pose>
-        0 0 0
+        -6.5 2 0
         0 0 0
       </pose>
 
@@ -102,8 +131,8 @@
       <name>couch</name>
 
       <pose>
-        0 0 0
-        0 0 0
+        0.5 0 0
+        0 0 1.5708
       </pose>
 
     </include>

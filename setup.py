@@ -91,7 +91,6 @@ setup(
         ),
     ],
 
-    install_requires=['setuptools'],
     zip_safe=True,
 
     maintainer='sarwan-sadique',
@@ -110,6 +109,8 @@ setup(
         'console_scripts': [
             'teleop_node = pointcloud_bot.teleop_node:main',
             'pointcloud_mapper = pointcloud_bot.pointcloud_mapper:main',
+            'yolo_detector = pointcloud_bot.yolo_detector:main',
+            'yolo_3d_mapper = pointcloud_bot.yolo_3d_mapper:main',
         ],
     },
 )

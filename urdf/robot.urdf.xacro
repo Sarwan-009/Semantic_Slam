@@ -335,9 +335,80 @@
 
   </joint>
 
-    <!-- ================================================= -->
-  <!-- Depth Camera Link                                -->
+
+  <link name="laser_link">
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+          <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+
+      <material name="lidar_material">
+        <color rgba="0.15 0.15 0.15 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_link"/>
+    <origin xyz="0.20 0 0.12" rpy="0 0 0"/>
+  </joint>
+
   <!-- ================================================= -->
+<!-- 3D LiDAR Link                                     -->
+<!-- ================================================= -->
+
+<link name="lidar_3d_link">
+
+  <visual>
+
+    <origin xyz="0 0 0"/>
+
+    <geometry>
+      <cylinder
+        radius="0.06"
+        length="0.08"/>
+    </geometry>
+
+    <material name="lidar3d_material">
+      <color rgba="0.25 0.25 0.25 1.0"/>
+    </material>
+
+  </visual>
+
+  <collision>
+
+    <origin xyz="0 0 0"/>
+
+    <geometry>
+      <cylinder
+        radius="0.06"
+        length="0.08"/>
+    </geometry>
+
+  </collision>
+
+</link>
+
+<joint name="lidar_3d_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="lidar_3d_link"/>
+  <origin xyz="0.20 0 0.22" rpy="0 0 0"/>
+</joint>
+
+    <!-- ================================================= -->
+    <!-- Depth Camera Link                                -->
+    <!-- ================================================= -->
 
   <link name="camera_link">
 
@@ -406,6 +477,8 @@
 
   <gazebo reference="camera_link">
 
+  <!--
+
   <sensor name="rgbd_camera" type="rgbd_camera">
 
     <pose>0 0 0 0 0 0</pose>
@@ -434,6 +507,143 @@
 
     <always_on>true</always_on>
     <visualize>true</visualize>
+
+  </sensor>
+
+  -->
+
+</gazebo>
+
+<!-- ================================================= -->
+<!-- Gazebo 2D LiDAR                                   -->
+<!-- ================================================= -->
+
+<gazebo reference="laser_link">
+
+  <sensor name="lidar_2d" type="gpu_lidar">
+
+    <pose>0 0 0 0 0 0</pose>
+
+    <topic>/scan</topic>
+
+    <gz_frame_id>laser_link</gz_frame_id>
+
+    <update_rate>10</update_rate>
+
+    <always_on>true</always_on>
+
+    <visualize>true</visualize>
+
+    <lidar>
+
+      <scan>
+
+        <horizontal>
+
+          <!-- 360 degree scan -->
+          <samples>720</samples>
+
+          <resolution>1</resolution>
+
+          <min_angle>-3.14159265</min_angle>
+
+          <max_angle>3.14159265</max_angle>
+
+        </horizontal>
+
+        <vertical>
+
+          <!-- Single horizontal layer -->
+          <samples>1</samples>
+
+          <resolution>1</resolution>
+
+          <min_angle>0</min_angle>
+
+          <max_angle>0</max_angle>
+
+        </vertical>
+
+      </scan>
+
+      <range>
+
+        <min>0.10</min>
+
+        <max>12.0</max>
+
+        <resolution>0.01</resolution>
+
+      </range>
+
+    </lidar>
+
+  </sensor>
+
+</gazebo>
+
+<!-- ================================================= -->
+<!-- Gazebo 3D LiDAR                                   -->
+<!-- ================================================= -->
+
+<gazebo reference="lidar_3d_link">
+
+
+  <sensor name="lidar_3d" type="gpu_lidar">
+
+    <pose>0 0 0 0 0 0</pose>
+
+    <topic>/lidar_3d/points</topic>
+
+    <gz_frame_id>lidar_3d_link</gz_frame_id>
+
+    <update_rate>10</update_rate>
+
+    <always_on>true</always_on>
+
+    <visualize>true</visualize>
+
+    <lidar>
+
+      <scan>
+
+        <horizontal>
+
+          <samples>1024</samples>
+
+          <resolution>1</resolution>
+
+          <min_angle>-3.14159265</min_angle>
+
+          <max_angle>3.14159265</max_angle>
+
+        </horizontal>
+
+        <vertical>
+
+          <samples>32</samples>
+
+          <resolution>1</resolution>
+
+          <min_angle>-0.523599</min_angle>
+
+          <max_angle>0.523599</max_angle>
+
+        </vertical>
+
+      </scan>
+
+      <range>
+
+        <min>0.10</min>
+
+        <max>20.0</max>
+
+        <resolution>0.01</resolution>
+
+      </range>
+
+    </lidar>
 
   </sensor>
 
